@@ -15,8 +15,6 @@
         <h2>Can you beat the computer?</h2>
     </header>
 
-    
-
     <div id="score">
         <h3>ROUND SCORE</h3>
         <p class="player">Player</p class="numbers"><p id="playerScore">0</p><p>:</p><p id="computerScore">0</p> <p class="computer">Computer</p>
@@ -57,8 +55,6 @@
         const paper = document.getElementById('paper')
         const scissor = document.getElementById('scissor');
 
-       
-
         // computer random choice
 
         let choices = ['rock', 'paper', 'scissor'];
@@ -68,7 +64,6 @@
             
         }
 
-
         // display score and winner of the round on console
        
 
@@ -77,7 +72,7 @@
             const colorChoice = document.getElementById(playerChoice);
             playerScore++;
             totalScore++;
-            roundResult.innerHTML = `${playerChoice.charAt(0).toUpperCase() + playerChoice.substr(1)} beats ${computerChoice.charAt(0).toUpperCase() + computerChoice.substr(1)} you won this round!`;
+            roundResult.innerHTML = `${playerChoice.charAt(0).toUpperCase() + playerChoice.substr(1)} beats ${computerChoice.charAt(0).toUpperCase() + computerChoice.substr(1)}! you won this round!`;
             roundResult.setAttribute('style', 'color:limegreen')
             playerResult.innerHTML = playerScore;
             computerResult.innerHTML = cpuScore;
@@ -92,7 +87,7 @@
             const colorChoice = document.getElementById(playerChoice);
             cpuScore++;
             totalScore++;
-            roundResult.innerHTML = `${playerChoice.charAt(0).toUpperCase() + playerChoice.substr(1)} loses to ${computerChoice.charAt(0).toUpperCase() + computerChoice.substr(1)} you lost this round!`;
+            roundResult.innerHTML = `${playerChoice.charAt(0).toUpperCase() + playerChoice.substr(1)} loses to ${computerChoice.charAt(0).toUpperCase() + computerChoice.substr(1)}! you lost this round!`;
             roundResult.setAttribute('style','color:red');
             playerResult.innerHTML = playerScore;
             computerResult.innerHTML = cpuScore;
@@ -106,7 +101,7 @@
         function draw(playerChoice,computerChoice) {
 
             const colorChoice = document.getElementById(playerChoice);
-            roundResult.innerHTML = `${playerChoice.charAt(0).toUpperCase() + playerChoice.substr(1)} equals to  ${computerChoice.charAt(0).toUpperCase() + computerChoice.substr(1)} it's a draw!`;
+            roundResult.innerHTML = `${playerChoice.charAt(0).toUpperCase() + playerChoice.substr(1)} equals ${computerChoice.charAt(0).toUpperCase() + computerChoice.substr(1)}! it's a draw!`;
             roundResult.setAttribute('style','color:yellow');
             playerResult.innerHTML = playerScore;
             computerResult.innerHTML = cpuScore;
@@ -116,11 +111,6 @@
             if (totalScore == 5) score();
         }
 
-
-
-             
-    
-        
 
         //  display final result on console.
 
@@ -135,37 +125,33 @@
         }
 
 
-// function to check who is gonna win the game.    
+            // function to check who is gonna win the game.    
         
 
-function playRound(playerChoice) { //("rock")
+        function playRound(playerChoice) { //("rock")
 
-let cpuChoice = computerSelection();
-var playerSelecion = playerChoice;
+        let cpuChoice = computerSelection();
+        var playerSelecion = playerChoice;
 
-switch (playerChoice + cpuChoice) {
+        switch (playerChoice + cpuChoice) {
 
-    case "rockscissor":
-    case "paperrock":
-    case "scissorpaper":
-        playerWin(playerChoice, cpuChoice);
-        break;
-    case "rockpaper":
-    case "paperscissor":
-    case "scissorrock":
-        computerWin(playerChoice, cpuChoice);
-        break;
-    case "rockrock":
-    case "paperpaper":
-    case "scissorscissor":
-        draw(playerChoice, cpuChoice);
-        break;
-       } 
-      
-    }   
-  
-
-
+            case "rockscissor":
+            case "paperrock":
+            case "scissorpaper":
+                playerWin(playerChoice, cpuChoice);
+                break;
+            case "rockpaper":
+            case "paperscissor":
+            case "scissorrock":
+                computerWin(playerChoice, cpuChoice);
+                break;
+            case "rockrock":
+            case "paperpaper":
+            case "scissorscissor":
+                draw(playerChoice, cpuChoice);
+                break;
+            }             
+        }   
 
         function game() {
 
@@ -178,21 +164,6 @@ switch (playerChoice + cpuChoice) {
 
         game();
         
-        
-
-
-
-
-        //  DOM
-
-        
-
-        
-
-        
-
-        
-
 
     </script>
 
