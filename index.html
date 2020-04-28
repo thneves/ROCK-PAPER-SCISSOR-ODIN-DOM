@@ -117,10 +117,13 @@
         function score() {
             if (totalScore == 5 && playerScore > cpuScore) {
                 displayWinner.innerHTML = `YOU ARE THE WINNER!!`
+                displayWinner.setAttribute('style', 'color: limegreen')
               } else if (totalScore == 5 && playerScore < cpuScore) {
                 displayWinner.innerHTML = `COMPUTER IS THE WINNER!!`
+                displayWinner.setAttribute('style', 'color: red')
               } else if (totalScore == 5 && playerScore == cpuScore) {
                 displayWinner.innerHTML = `IT'S A DRAW, BORING!!`
+                displayWinner.setAttribute('style', 'color: yellow')
             }
         }
 
