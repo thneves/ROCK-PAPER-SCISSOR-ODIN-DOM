@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Rock Paper Scissor</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>WELCOME TO ROCK, PAPER OR SCISSOR GAME!</h1>
+        <h2>Can you beat the computer?</h2>
+    </header>
+
+    
+
+    <div id="score">
+        <h3>ROUND SCORE</h3>
+        <p class="player">Player</p class="numbers"><p id="playerScore">0</p><p>:</p><p id="computerScore">0</p> <p class="computer">Computer</p>
+    </div>
+
+    
+    <p id="roundResult">Round winner</p>
+    
+    <p id="makeChoice">Make your choice</p>
+
+    <div id="btn-choices">
+
+        <button id="rock"><img src="images/rock.png" alt="rock" height="80" width="80"></button>
+        <button id="paper"><img src="images/paper.png" alt="paper" height="80" width="80"></button>
+        <button id="scissor"><img src="images/scissor.png" alt="scissor" height="80" width="80"></button>
+        <button onclick="location.reload();" id="reload"><img src="images/reload.png" alt="reload button" height="80" width="80"></button>
+
+    </div>
+
+    <div id="result">
+
+        <p id="displayWinner"> BEST OF 5 ROUNDS</p>
+
+    </div>
+
+    <script>
+
+        // variables
+
+        let roundResult = document.getElementById('roundResult');
+        let playerScore = 0;
+        let cpuScore = 0;
+        let totalScore = 0;
+        let playerResult = document.getElementById('playerScore');
+        let computerResult = document.getElementById('computerScore');
+        let result = document.getElementById('displayWinner');
+        const rock = document.getElementById('rock');
+        const paper = document.getElementById('paper')
+        const scissor = document.getElementById('scissor');
+
+       
+
+        // computer random choice
+
+        let choices = ['rock', 'paper', 'scissor'];
+
+        function computerSelection() {
+            return choices[Math.floor(Math.random() * choices.length)];
+            
+        }
+
+
+        // display score and winner of the round on console
+       
+
+        function playerWin(playerChoice,computerChoice) {
+
+            const colorChoice = document.getElementById(playerChoice);
+            playerScore++;
+            totalScore++;
+            roundResult.innerHTML = `${playerChoice.charAt(0).toUpperCase() + playerChoice.substr(1)} beats ${computerChoice.charAt(0).toUpperCase() + computerChoice.substr(1)} you won this round!`;
+            roundResult.setAttribute('style', 'color:limegreen')
+            playerResult.innerHTML = playerScore;
+            computerResult.innerHTML = cpuScore;
+            colorChoice.classList.add('green-glow');
+            setTimeout(() => colorChoice.classList.remove("green-glow"), 400);
+            if (totalScore == 5) score();
+            if (totalScore == 5) playerScore += 0;
+        }
+
+        function computerWin(playerChoice,computerChoice) {
+            
+            const colorChoice = document.getElementById(playerChoice);
+            cpuScore++;
+            totalScore++;
+            roundResult.innerHTML = `${playerChoice.charAt(0).toUpperCase() + playerChoice.substr(1)} loses to ${computerChoice.charAt(0).toUpperCase() + computerChoice.substr(1)} you lost this round!`;
+            roundResult.setAttribute('style','color:red');
+            playerResult.innerHTML = playerScore;
+            computerResult.innerHTML = cpuScore;
+            colorChoice.classList.add('red-glow')
+            setTimeout(() => colorChoice.classList.remove("red-glow"), 400);
+            if (totalScore == 5) score();
+            if (totalScore == 5) playerScore += 0;
+        }
+
+
+        function draw(playerChoice,computerChoice) {
+
+            const colorChoice = document.getElementById(playerChoice);
+            roundResult.innerHTML = `${playerChoice.charAt(0).toUpperCase() + playerChoice.substr(1)} equals to  ${computerChoice.charAt(0).toUpperCase() + computerChoice.substr(1)} it's a draw!`;
+            roundResult.setAttribute('style','color:yellow');
+            playerResult.innerHTML = playerScore;
+            computerResult.innerHTML = cpuScore;
+            colorChoice.classList.add('yellow-glow')
+            setTimeout(() => colorChoice.classList.remove("yellow-glow"), 400);
+            totalScore++;
+            if (totalScore == 5) score();
+        }
+
+
+
+             
+    
+        
+
+        //  display final result on console.
+
+        function score() {
+            if (totalScore == 5 && playerScore > cpuScore) {
+                displayWinner.innerHTML = `YOU ARE THE WINNER!!`
+              } else if (totalScore == 5 && playerScore < cpuScore) {
+                displayWinner.innerHTML = `COMPUTER IS THE WINNER!!`
+              } else if (totalScore == 5 && playerScore == cpuScore) {
+                displayWinner.innerHTML = `IT'S A DRAW, BORING!!`
+            }
+        }
+
+
+// function to check who is gonna win the game.    
+        
+
+function playRound(playerChoice) { //("rock")
+
+let cpuChoice = computerSelection();
+var playerSelecion = playerChoice;
+
+switch (playerChoice + cpuChoice) {
+
+    case "rockscissor":
+    case "paperrock":
+    case "scissorpaper":
+        playerWin(playerChoice, cpuChoice);
+        break;
+    case "rockpaper":
+    case "paperscissor":
+    case "scissorrock":
+        computerWin(playerChoice, cpuChoice);
+        break;
+    case "rockrock":
+    case "paperpaper":
+    case "scissorscissor":
+        draw(playerChoice, cpuChoice);
+        break;
+       } 
+      
+    }   
+  
+
+
+
+        function game() {
+
+        rock.addEventListener('click', () => playRound('rock'));
+        paper.addEventListener('click', () => playRound('paper'));
+        scissor.addEventListener('click', () => playRound('scissor'));
+
+        
+        }
+
+        game();
+        
+        
+
+
+
+
+        //  DOM
+
+        
+
+        
+
+        
+
+        
+
+
+    </script>
+
+</body>
+
+</html>
